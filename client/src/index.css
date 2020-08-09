@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
 }
 
-#book-search, #results {
+#book-search, #results, #header-section {
   border: 1px solid gray;
   padding: 20px 20px 40px 20px;
   margin: 40px 0px;
