@@ -2,14 +2,14 @@ import React from "react";
 import { Row, Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import "./BookCard.css"
 
-const BookCard = () => {
+const BookCard = props => {
     return (
         <Card>
             <CardBody>
                 <Row className="no-gutters align-items-center">
                     <Col xs="12" md="9">
-                        <CardTitle>Title</CardTitle>
-                        <CardSubtitle>Written by Author Name</CardSubtitle>
+                        <CardTitle>{props.title}</CardTitle>
+                        <CardSubtitle>Written by {props.authors}</CardSubtitle>
                     </Col>
                     <Col xs="12" md="3">
                         <Button>View</Button>
@@ -19,10 +19,10 @@ const BookCard = () => {
 
                 <Row className="no-gutters align-items-center">
                     <Col xs="12" md="2">
-                        <CardImg className="mt-3" src="https://via.placeholder.com/150" alt="Card image cap" />
+                        <CardImg className="mt-3" src={props.image} alt="Card image cap" />
                     </Col>
                     <Col xs="12" md="10">
-                        <CardText className="ml-3">Summary</CardText>
+                        <CardText className="ml-3">{props.description}</CardText>
                     </Col>
                 </Row>
             </CardBody>

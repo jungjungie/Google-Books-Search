@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Results from "../components/Results/Results";
+import BookCard from "../components/BookCard/BookCard";
 import API from "../utils/API";
 
 const SearchPage = () => {
     // Setting initial state of search input
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState("")
 
     // Setting initial state of search results
     const [results, setResults] = useState([])
@@ -48,8 +49,19 @@ const SearchPage = () => {
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}
             />
-            {results.map((item) => <p>{item.title}</p>)}
-            <Results />
+
+            <Results>
+                {results.map((item) =>
+               <BookCard 
+                    id={item.key}
+                    title={item.title}
+                    authors={item.authors.join(", ")}
+                    description={item.description}
+                    image={item.image}
+                    link={item.link}
+                />
+                )}
+            </Results>
         </>
     )
 }
