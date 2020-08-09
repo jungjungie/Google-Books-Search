@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import SearchBar from "./components/SearchBar/SearchBar";
-import Results from "./components/Results/Results";
+import SearchPage from "./pages/SearchPage";
+
 import { Container } from 'reactstrap';
 
 function App() {
@@ -9,8 +9,7 @@ function App() {
 		<>
 			<Header />
 			<Container>
-				<SearchBar />
-				<Results />
+				<SearchPage />
 			</Container>
 		</>
 	);
