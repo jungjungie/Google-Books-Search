@@ -1,9 +1,23 @@
 .searchBox {
     border-top-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
+    color: #444;
+    background: white;
+}
+
+.searchBox:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 1px 2px 4px #999 !important;
 }
 
 .searchBtn {
+
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
+}
+
+.searchBtn:hover {
+    border: 1px solid #555 !important;
+    box-shadow: 1px 2px 4px #999 !important;
 }

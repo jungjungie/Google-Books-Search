@@ -4,12 +4,12 @@ import './SearchBar.css';
 
 const SearchBar = props => {
     return (
-        <section id="book-search">
+        <section id="book-search" className="shadow-sm">
             <h2 className="section-titles">Book Search</h2>
 
             <Form className="row">
-                <Input onChange={props.handleInputChange} type="text" name="booksearch" placeholder="Search by title or author" className="col-10 ml-sm-3 searchBox" />
-                <Button onClick={props.handleFormSubmit} className="justify-content-end align-items-end searchBtn">Search</Button>
+                <Input onChange={props.handleInputChange} type="text" name="booksearch" placeholder="Search by title" className="searchBox ml-3 col" />
+                <Button onClick={props.handleFormSubmit} className="searchBtn mr-3">Search</Button>
             </Form>
         </section>
     )
