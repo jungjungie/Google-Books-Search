@@ -16,6 +16,19 @@
     right: 0;
 }
 
+@media (max-width: 768px) {
+    .btnWrapper {
+        position: relative;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .saveBtns, .viewBtns, .deleteBtns {
+        width: 50%;
+    }
+}
+
 .saveBtns {
     background: #3cba54 !important;
     border: 1px solid #3cba54 !important;
