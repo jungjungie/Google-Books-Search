@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import SavedBooks from "../components/SavedBooks/SavedBooks";
+import BookCard from "../components/BookCard/BookCard";
 
 const SavedPage = () => {
     const [savedBooks, setSavedBooks] = useState([])
+    // const [savedPg, setSavedPg] = useState(false)
 
     useEffect(() => {
-        loadBooks()
+        loadBooks();
+        // setSavedPg(true);
       }, [])
 
     // Function to load saved books from db 
@@ -19,12 +22,18 @@ const SavedPage = () => {
     };
 
     return (
-        <>
-        <SavedBooks />
-        {savedBooks.map(book => (
-                  <p>{book.title}</p>
-                ))}
-        </>
+        <SavedBooks>
+             {savedBooks.map((item) =>
+                        <BookCard
+                            id={item.key}
+                            title={item.title}
+                            authors={item.authors}
+                            description={item.description}
+                            image={item.image}
+                            link={item.link}
+                        />
+                    )}
+        </SavedBooks>
     )
 }
 

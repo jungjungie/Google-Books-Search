@@ -24,15 +24,21 @@ const SearchPage = () => {
 
         API.getBook(search)
             .then(res => {
-                // console.log(res.data.items);
+                console.log(res.data.items);
 
                 const bookFields = res.data.items.map(item => {
+                    // Sets thumbnail to an empty string if API has no thumbnail data
+                    let thumbnail = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : "";
+
+                    // console.log(item.volumeInfo)
+                    console.log(thumbnail)
+
                     return {
                         key: item.id,
                         title: item.volumeInfo.title,
                         authors: item.volumeInfo.authors,
                         description: item.volumeInfo.description,
-                        image: item.volumeInfo.imageLinks.thumbnail,
+                        image: thumbnail,
                         link: item.volumeInfo.infoLink
                     }
                 })
@@ -77,7 +83,7 @@ const SearchPage = () => {
                 <Results>
                     {results.map((item) =>
                         <BookCard
-                            id={item.key}
+                            key={item.key}
                             title={item.title}
                             authors={item.authors.join(", ")}
                             description={item.description}
