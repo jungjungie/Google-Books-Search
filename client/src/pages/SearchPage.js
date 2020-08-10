@@ -50,6 +50,8 @@ const SearchPage = () => {
                 handleFormSubmit={handleFormSubmit}
             />
 
+            {/* Results component will show only if results.length is not empty */}
+            {results.length ? (
             <Results>
                 {results.map((item) =>
                <BookCard 
@@ -62,6 +64,9 @@ const SearchPage = () => {
                 />
                 )}
             </Results>
+            ) : (
+                <p></p>
+            )}
         </>
     )
 }
