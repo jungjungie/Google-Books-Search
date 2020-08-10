@@ -46,9 +46,23 @@ const SearchPage = () => {
     const saveBook = (event) => {
         event.preventDefault();
 
-        console.log("clicked")
-        console.log(event)
-        console.log(event.target)
+        // console.log(event.target)
+
+        let newBook = {
+            title: event.target.dataset.title,
+            authors: event.target.dataset.authors,
+            description: event.target.dataset.description,
+            image: event.target.dataset.image,
+            link: event.target.dataset.link
+        }
+
+        console.log(newBook)
+
+        API.saveBook(newBook)
+            .then(res =>
+                console.log(res)
+            )
+            .catch(err => console.log(err));;
     }
 
     return (
@@ -60,22 +74,22 @@ const SearchPage = () => {
 
             {/* Results component will show only if results.length is not empty */}
             {results.length ? (
-            <Results>
-                {results.map((item) =>
-               <BookCard 
-                    id={item.key}
-                    title={item.title}
-                    authors={item.authors.join(", ")}
-                    description={item.description}
-                    image={item.image}
-                    link={item.link}
-                    saveBook={saveBook}
-                />
-                )}
-            </Results>
+                <Results>
+                    {results.map((item) =>
+                        <BookCard
+                            id={item.key}
+                            title={item.title}
+                            authors={item.authors.join(", ")}
+                            description={item.description}
+                            image={item.image}
+                            link={item.link}
+                            saveBook={saveBook}
+                        />
+                    )}
+                </Results>
             ) : (
-                <p></p>
-            )}
+                    <p></p>
+                )}
         </>
     )
 }
