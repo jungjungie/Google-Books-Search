@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Results from "../components/Results/Results";
-import BookCard from "../components/BookCard/BookCard";
+import BookCardSearched from "../components/BookCard/BookCardSearched";
 import API from "../utils/API";
 
 const SearchPage = () => {
@@ -30,8 +30,7 @@ const SearchPage = () => {
                     // Sets thumbnail to an empty string if API has no thumbnail data
                     let thumbnail = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : "";
 
-                    // console.log(item.volumeInfo)
-                    console.log(thumbnail)
+                    // console.log(thumbnail)
 
                     return {
                         key: item.id,
@@ -43,12 +42,13 @@ const SearchPage = () => {
                     }
                 })
 
-                console.log(bookFields);
+                // console.log(bookFields);
 
                 setResults(bookFields)
             })
     }
 
+    // Makes the API call to save a book to our db
     const saveBook = (event) => {
         event.preventDefault();
 
@@ -82,7 +82,7 @@ const SearchPage = () => {
             {results.length ? (
                 <Results>
                     {results.map((item) =>
-                        <BookCard
+                        <BookCardSearched
                             key={item.key}
                             title={item.title}
                             authors={item.authors.join(", ")}
