@@ -27,19 +27,26 @@ const SavedPage = () => {
     }
 
     return (
-        <SavedBooks>
-            {savedBooks.map((item) =>
-                <BookCardSaved
-                    id={item._id}
-                    title={item.title}
-                    authors={item.authors}
-                    description={item.description}
-                    image={item.image}
-                    link={item.link}
-                    deleteBook={deleteBook}
-                />
-            )}
-        </SavedBooks>
+        <>
+            {savedBooks.length ? (
+                <SavedBooks>
+                    {savedBooks.map((item) =>
+                        <BookCardSaved
+                            id={item._id}
+                            key={item._id}
+                            title={item.title}
+                            authors={item.authors}
+                            description={item.description}
+                            image={item.image}
+                            link={item.link}
+                            deleteBook={deleteBook}
+                        />
+                    )}
+                </SavedBooks>
+            ) : (
+                    <h2 className="section-titles">No Books Saved</h2>
+                )}
+        </>
     )
 }
 
