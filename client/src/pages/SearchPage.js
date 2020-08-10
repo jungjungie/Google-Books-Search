@@ -43,6 +43,14 @@ const SearchPage = () => {
             })
     }
 
+    const saveBook = (event) => {
+        event.preventDefault();
+
+        console.log("clicked")
+        console.log(event)
+        console.log(event.target)
+    }
+
     return (
         <>
             <SearchBar
@@ -61,6 +69,7 @@ const SearchPage = () => {
                     description={item.description}
                     image={item.image}
                     link={item.link}
+                    saveBook={saveBook}
                 />
                 )}
             </Results>

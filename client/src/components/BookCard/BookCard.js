@@ -14,7 +14,7 @@ const BookCard = props => {
                     <Col xs="12" md="3">
                         <div className="btnWrapper">
                             <a className="btn viewBtns" href={props.link} target="_blank" rel="noopener noreferrer">View</a>
-                            <Button className="saveBtns ml-3">Save</Button>
+                            <Button onClick={props.saveBook} className="saveBtns ml-3">Save</Button>
                         </div>
                     </Col>
                 </Row>
