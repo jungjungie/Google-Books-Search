@@ -3,8 +3,8 @@ body {
   padding: 0;
 }
 
-#book-search, #results, #header-section {
-  border: 1px solid gray;
+#book-search, #results, #header-section, #saved-books {
+  border: 1px solid #ececec;
   border-radius: 3px;
   padding: 20px 20px 40px 20px;
   margin: 40px 0px;
