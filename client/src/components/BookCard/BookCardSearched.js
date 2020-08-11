@@ -23,7 +23,7 @@ const BookCard = props => {
                     <Col xs="12" md="2">
                         {/* Renders the image only if props.image is not "" */}
                         {props.image !== "" &&
-                        <CardImg className="img-fluid mt-1" src={props.image} alt={props.title} />}
+                        <CardImg className="img-fluid mt-2 mb-3" src={props.image} alt={props.title} />}
                     </Col>
                     <Col xs="12" md="10">
                         <CardText className="ml-3">{props.description}</CardText>

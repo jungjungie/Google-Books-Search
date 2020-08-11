@@ -21,3 +21,10 @@
     box-shadow: 0px 1px 2px #2968d4;
     color: white;
 } 
+
+#savedNum {
+    color: #4885ed;
+    background: white;
+    border-radius: 3px;
+    padding: 1px 3px;
+}
