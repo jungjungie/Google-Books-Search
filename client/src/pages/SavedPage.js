@@ -11,7 +11,7 @@ const SavedPage = () => {
     }, [])
 
     // Function to load saved books from db 
-    function loadBooks() {
+    const loadBooks = () => {
         API.getBooks()
             .then(res =>
                 setSavedBooks(res.data.reverse())

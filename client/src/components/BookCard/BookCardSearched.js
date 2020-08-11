@@ -11,7 +11,7 @@ const BookCard = props => {
 
                         {/* Displays if there is no author data */}
                         <CardTitle>{props.title}</CardTitle>
-                        {props.authors == "" && <CardSubtitle className="mb-3">Author not available</CardSubtitle>}
+                        {props.authors === "" && <CardSubtitle className="mb-3">Author not available</CardSubtitle>}
 
                         {/* Displays if there is author data */}
                         {props.authors !== "" &&
@@ -20,7 +20,14 @@ const BookCard = props => {
                     <Col xs="12" md="3">
                         <div className="btnWrapper">
                             <a className="btn viewBtns" href={props.link} target="_blank" rel="noopener noreferrer">View</a>
-                            <Button onClick={props.saveBook} data-title={props.title} data-authors={props.authors} data-description={props.description} data-image={props.image} data-link={props.link} className="saveBtns ml-3">Save</Button>
+                            <Button 
+                            onClick={props.saveBook}
+                            data-id={props.id}
+                            data-title={props.title}
+                            data-authors={props.authors}
+                            data-description={props.description} 
+                            data-image={props.image}
+                            data-link={props.link} className="saveBtns ml-3">Save</Button>
                         </div>
                     </Col>
                 </Row>

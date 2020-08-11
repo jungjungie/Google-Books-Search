@@ -7,7 +7,6 @@ import API from "../utils/API";
 const SearchPage = () => {
     // Setting initial state of search input
     const [search, setSearch] = useState("")
-
     // Setting initial state of search results
     const [results, setResults] = useState([])
 
@@ -33,7 +32,7 @@ const SearchPage = () => {
                     // console.log(thumbnail)
 
                     return {
-                        key: item.id,
+                        id: item.id,
                         title: item.volumeInfo.title,
                         authors: item.volumeInfo.authors,
                         description: item.volumeInfo.description,
@@ -42,19 +41,18 @@ const SearchPage = () => {
                     }
                 })
 
-                // console.log(bookFields);
+                console.log(bookFields);
 
                 setResults(bookFields)
             })
     }
 
     // Makes the API call to save a book to our db
-    const saveBook = (event) => {
+    const saveBook = async (event) => {
         event.preventDefault();
 
-        // console.log(event.target)
-
         let newBook = {
+            apiId: event.target.dataset.id,
             title: event.target.dataset.title,
             authors: event.target.dataset.authors,
             description: event.target.dataset.description,
@@ -64,12 +62,35 @@ const SearchPage = () => {
 
         console.log(newBook)
 
+        const bookList = await getSavedBooks();
+
+        // Checks to see if book is already saved and alerts the user if so
+        console.log(`Book count: ${bookList.length}`)
+        for (let i = 0; i < bookList.length; i++) {
+            console.log(bookList[i].apiId)
+            if (bookList[i].apiId === newBook.apiId) {
+                alert("Book is already saved!")
+                return;
+            }
+        }
+
         API.saveBook(newBook)
             .then(res =>
                 console.log(res)
             )
             .catch(err => console.log(err));;
     }
+
+    // Function to load saved books from db 
+    const getSavedBooks = async () => {
+        try {
+            const res = await API.getBooks()
+            return res.data;
+        } catch (err) {
+            console.log(err);
+            return;
+        }
+    };
 
     return (
         <>
@@ -81,13 +102,13 @@ const SearchPage = () => {
             {/* Results component will show only if results.length is not empty */}
             {results.length ? (
                 <Results>
-                    {results.map((item) =>
-                    {
+                    {results.map((item) => {
                         // Sets authors to an empty string if there is no author data in the API call
                         let authors = (item.authors) ? item.authors.join(", ") : "";
 
                         return <BookCardSearched
-                            key={item.key}
+                            id={item.id}
+                            key={item.id}
                             title={item.title}
                             authors={authors}
                             description={item.description}
