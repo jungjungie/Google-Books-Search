@@ -82,15 +82,20 @@ const SearchPage = () => {
             {results.length ? (
                 <Results>
                     {results.map((item) =>
-                        <BookCardSearched
+                    {
+                        // Sets authors to an empty string if there is no author data in the API call
+                        let authors = (item.authors) ? item.authors.join(", ") : "";
+
+                        return <BookCardSearched
                             key={item.key}
                             title={item.title}
-                            authors={item.authors.join(", ")}
+                            authors={authors}
                             description={item.description}
                             image={item.image}
                             link={item.link}
                             saveBook={saveBook}
                         />
+                    }
                     )}
                 </Results>
             ) : (

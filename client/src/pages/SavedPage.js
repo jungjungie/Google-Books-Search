@@ -14,7 +14,7 @@ const SavedPage = () => {
     function loadBooks() {
         API.getBooks()
             .then(res =>
-                setSavedBooks(res.data)
+                setSavedBooks(res.data.reverse())
             )
             .catch(err => console.log(err));
     };
