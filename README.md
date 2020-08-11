@@ -48,7 +48,7 @@ npm start
 ***
 ## Demo
 <p align="center">
-  <img src="" alt="GIF demo of app" />
+  <img src="client/public/images/demo.gif" alt="GIF demo of app" />
 </p>
 
 ***
