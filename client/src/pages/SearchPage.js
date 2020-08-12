@@ -45,6 +45,8 @@ const SearchPage = () => {
 
                 setResults(bookFields)
             })
+
+            setSearch("")
     }
 
     // Makes the API call to save a book to our db
@@ -97,6 +99,7 @@ const SearchPage = () => {
             <SearchBar
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}
+                searchInput={search}
             />
 
             {/* Results component will show only if results.length is not empty */}
